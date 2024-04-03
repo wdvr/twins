@@ -1,0 +1,15 @@
+image: node:latest
+
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  script:
+    - npm install
+    - npm run build
+    - apt-get update -y && apt-get install -y python pip
+    - pip install awscli
+    - aws s3 sync ./build s3://oneplustwo.team --delete
+  only:
+    - main

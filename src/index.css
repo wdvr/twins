@@ -1,3 +1,27 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  font-size: calc(10px + 2vmin);
+  color: rgb(203, 198, 192);
+  display: flex;
+  flex-direction: column;
+}
+
+/* .tex-container {
+  height: 70px !important;
+} */
+
+.App-container {
+  padding-top: 3%;
+}
+
+.blurred {
+  filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +31,62 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input[type=text] {
+  color: #34282c;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: calc(1rem + 2vmin);
+  border-radius: 3px;
+  width: 80%;
+  max-width: 650px;
+  border: 2px solid #43484b;
+  background-color: #181a1b;
+  color: rgb(203, 198, 192);
+}
+
+input[type=text]:focus {
+  border: 2px solid #8080ff;
+}
+
+input[type=text].error {
+  border: 2px solid #e06c75;
+}
+
+.tex-border {
+  border: 2px solid #a0a0a0;
+  width: 100%;
+  padding: 10px;
+  border-radius: 3px
+}
+
+.tex-container{
+  height: calc(80px + 2vmin);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.external-links{
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  margin-bottom: 40px;
+  align-items: center;
+  color: rgb(203, 198, 192);
+  text-decoration: none;
+}
+
+.error-hint {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+a:hover {
+  color: #8080ff;
+}
+
+a:hover > svg {
+  fill: #8080ff;
 }
