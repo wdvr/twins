@@ -50,6 +50,7 @@ function App() {
   const [lastValidInputFour, setLastValidInputFour] = React.useState("");
   const [lastValidInputFinal, setLastValidInputFinal] = React.useState("");
   const [correctAnswer, setCorrectAnswer] = React.useState(false);
+  const [wasCorrectOnce, setWasCorrectOnce] = React.useState(false);
 
   const [error, setError] = React.useState(null);
   const hasError = error !== null;
@@ -112,6 +113,7 @@ function App() {
       tuv === 1
     ) {
       setCorrectAnswer(true);
+      setWasCorrectOnce(true);
     } else if (
       abc === 1 &&
       def === 1 &&
@@ -122,10 +124,20 @@ function App() {
       ghi === 1
     ) {
       setCorrectAnswer(true);
+      setWasCorrectOnce(true);
     } else {
       setCorrectAnswer(false);
     }
   };
+
+  // calculate the height of the page (so including the scrollable part)
+  const pageHeight = Math.max(
+    document.body.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.clientHeight,
+    document.documentElement.scrollHeight,
+    document.documentElement.offsetHeight
+  );
 
   return (
     <div className='App'>
@@ -134,10 +146,11 @@ function App() {
       <div className={showPopup ? "App-container blurred": "App-container"}>
         <h3>Gender Reveal Party</h3>
         <h5 class="top">Welcome, {cookies.userName}!</h5> <a href="/?reset" class="notyou">(Not {cookies.userName}?)</a>
-        <p>
+        <p class="explanation">
           {" "}
           As is tradition for centuries in our family, the gender of future
-          children are announced through a mathematical formula. The task is
+          children are announced through a mathematical formula.</p>
+        <p class="task"> Your task is
           simple: simplify the formula below.
         </p>
 
@@ -289,19 +302,19 @@ function App() {
         </div>
 
         {inputFinalValue && (correctAnswer ? <GreenCheckmark /> : <RedCross />)}
-        {correctAnswer && (
-          <Confetti width={width} height={height} colors={["#4682b4"]} />
+        {wasCorrectOnce && (
+          <Confetti recycle={correctAnswer} width={width} height={pageHeight} colors={["#4682b4"]} numberOfPieces={300} />
         )}
         {!correctAnswer && (
           // colors blue and pink
-          <Confetti width={width} height={200} numberOfPieces={2} colors={["#ff69b4", "#4682b4"]} />
+          <Confetti  width={width} height={200} numberOfPieces={2} colors={["#ff69b4", "#4682b4"]} />
         )}
         {hasError && <div className="error-hint">hint: {error}</div>}
       </div>
 
       <a
         className="external-links"
-        href="https://www.github.com/jpribyl/react-hook-mathjax"
+        href="https://github.com/wdvr/twins"
       >
         Code available on
         <svg

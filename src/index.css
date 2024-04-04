@@ -11,6 +11,14 @@
   .App-container {
     padding-top: 3%;
   }
+
+  .explanation {
+    margin-bottom: 3em;
+  }
+
+  .task {
+    margin-bottom: 2em;
+  }
   
   .blurred {
     filter: blur(8px);
