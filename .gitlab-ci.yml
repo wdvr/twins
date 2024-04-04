@@ -14,5 +14,7 @@ deploy:
     - npm install
     - npm run build
     - aws s3 sync ./build s3://oneplustwo.team --delete
+    - aws s3 cp s3://oneplustwo.team/index.html s3://oneplustwo.team/index.html --metadata-directive REPLACE --cache-control max-age=0 --content-type "text/html"
+
   only:
     - main
