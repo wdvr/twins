@@ -93,6 +93,20 @@ function App() {
     );
   };
 
+  const sendSolvedToGA = (userName) => {
+    window.gtag('event', 'solved', {
+      'event_category': 'User',
+      'event_label': userName,
+    });
+  };
+
+  const sendSolutionToGA = (solution, correct) => {
+    window.gtag('event', 'solution', {
+      'event_category': (correct ? 'correct_solution' : 'incorrect_solution')+cookies.userName,
+      'event_label': solution,
+    });
+
+
   const validateResult = (value) => {
     const ls = value.toLowerCase().replace(/ /g, "");
     const abc = ls.split(String.fromCharCode(100 + 20)).length - 1;
@@ -114,6 +128,8 @@ function App() {
     ) {
       setCorrectAnswer(true);
       setWasCorrectOnce(true);
+      sendSolvedToGA(cookies.userName);
+      sendSolutionToGA(value);
     } else if (
       abc === 1 &&
       def === 1 &&
@@ -125,8 +141,11 @@ function App() {
     ) {
       setCorrectAnswer(true);
       setWasCorrectOnce(true);
+      sendSolvedToGA(cookies.userName);
+      sendSolutionToGA(value);
     } else {
       setCorrectAnswer(false);
+      sendSolutionToGA(value);
     }
   };
 
