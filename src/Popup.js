@@ -46,7 +46,7 @@ const UserNamePopup = ({ showPopup, setShowPopup }) => {
         onChange={(e) => setName(e.target.value)}
         placeholder="Your name"
       />
-      <button onClick={handleNameSubmit}>Get started!</button>
+      <button onClick={handleNameSubmit}>Let's go!</button>
     </div>
   );
 };
