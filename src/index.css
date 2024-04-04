@@ -2,7 +2,7 @@
     text-align: center;
     background-color: #282c34;
     min-height: 100vh;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(9px + 2vmin);
     color: rgb(203, 198, 192);
     display: flex;
     flex-direction: column;
@@ -80,6 +80,7 @@
     align-items: center;
     color: rgb(203, 198, 192);
     text-decoration: none;
+    font-size: small;
   }
   
   .error-hint {
@@ -126,17 +127,19 @@
   
   h5.top {
     display: inline;
+    font-size: x-large;
   }
   
-  h5.final {
+  p.final {
     margin-top: 25px;
+    font-weight: bold;
   }
   
   h3 {
     /* h3 is full width, all caps, slight colored background */
     width: 80%;
     background-color: #8080ff;
-    color: white;
+    color: rgb(12, 12, 12);
     text-transform: uppercase;
     padding: 10px 0;
     border-radius: 5px;

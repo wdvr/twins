@@ -31,7 +31,7 @@ function App() {
     "[(x+a)(y+b)−ab -(x+y)]×[(x+c)(y+d)−cd-2*(x+y)]=FUN";
 
   const inputValue = "[(x+a)(y+b)−ab -(x+y)]";
-  const inputValue2 = "  ×[(x+c)(y+d)−cd-(x+y)]=FUN";
+  const inputValue2 = "  ×[(x+c)(y+d)−cd-2*(x+y)]=FUN";
   const inputValue3 = "a = 1; b=1; c=2; d=2";
 
   const { width } = useWindowSize();
@@ -168,10 +168,8 @@ function App() {
         <h5 class="top">Welcome, {cookies.userName}!</h5> <a href="/?reset" class="notyou">(Not {cookies.userName}?)</a>
         <p class="explanation">
           {" "}
-          As is tradition for centuries in our family, the gender of future
-          children are announced through a mathematical formula.</p>
-        <p class="task"> Your task is
-          simple: simplify the formula below.
+          As the tradition in our family goes, the gender of future children is announced through a riddle.</p>
+        <p class="task"> Your task is simple: simplify the formula below.
         </p>
 
         <div>
@@ -221,7 +219,7 @@ function App() {
           />
         </div>
 
-        <h5>Use this as your workspace to write down intermediate steps </h5>
+        <p>You can use this as a workspace to write down intermediate steps:</p>
         <div>
           <input
             className={`${hasError ? "error" : ""}`}
@@ -295,7 +293,7 @@ function App() {
         </div>}
         
 
-        <h5 class="final">Validate your final result here:</h5>
+        <p class="final">Validate your final result here:</p>
         <input
           className={`${hasError ? "error" : ""}`}
           type="text"
@@ -338,7 +336,7 @@ function App() {
       >
         Code available on
         <svg
-          height="50px"
+          height="20px"
           fill="rgb(203, 198, 192)"
           role="img"
           viewBox="0 0 24 24"
