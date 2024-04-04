@@ -38,7 +38,7 @@ const UserNamePopup = ({ showPopup, setShowPopup }) => {
   return (
     <div class="popup">
       <h2>Hurray!</h2>
-      <p>Welcome to the latest gender reveal party. Please enter your name to get started.
+      <p>Welcome to this online gender reveal party. Please enter your name to get started.
 </p>
       <input
         type="text"
