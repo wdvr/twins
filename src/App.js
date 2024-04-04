@@ -105,6 +105,7 @@ function App() {
       'event_category': (correct ? 'correct_solution' : 'incorrect_solution')+cookies.userName,
       'event_label': solution,
     });
+  };
 
 
   const validateResult = (value) => {
