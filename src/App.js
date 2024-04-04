@@ -12,6 +12,15 @@ function App() {
   const [cookies] = useCookies(["userName"]);
   const [showPopup, setShowPopup] = useState(false);
 
+  // on path /?reset, delete the cookie
+  useEffect(() => {
+    if (window.location.search === "?reset") {
+      document.cookie = "userName=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+      window.location.href = "/";
+    }
+  }
+  , []);
+
   useEffect(() => {
     if (!cookies.userName) {
       setShowPopup(true);
@@ -124,6 +133,7 @@ function App() {
 
       <div className={showPopup ? "App-container blurred": "App-container"}>
         <h3>Gender Reveal Party</h3>
+        <h5 class="top">Welcome, {cookies.userName}!</h5> <a href="/?reset" class="notyou">(Not {cookies.userName}?)</a>
         <p>
           {" "}
           As is tradition for centuries in our family, the gender of future
@@ -213,7 +223,7 @@ function App() {
           />
         </div>
 
-        <div className="tex-container">
+        {!!inputTwoValue && <div className="tex-container">
           <Tex2SVG
             class={!!lastValidInputTwo ? "tex-border" : ""}
             tabindex={-1}
@@ -223,8 +233,8 @@ function App() {
             }
             onError={(html) => setError(getErrorFromHTML(html))}
           />
-        </div>
-        <div className="tex-container">
+        </div>}
+        {!!inputThreeValue && <div className="tex-container">
           <Tex2SVG
             class={!!lastValidInputThree ? "tex-border" : ""}
             tabindex={-1}
@@ -236,8 +246,8 @@ function App() {
             }
             onError={(html) => setError(getErrorFromHTML(html))}
           />
-        </div>
-        <div className="tex-container">
+        </div>}
+        {!!inputFourValue && <div className="tex-container">
           <Tex2SVG
             class={!!lastValidInputFour ? "tex-border" : ""}
             tabindex={-1}
@@ -249,9 +259,10 @@ function App() {
             }
             onError={(html) => setError(getErrorFromHTML(html))}
           />
-        </div>
+        </div>}
+        
 
-        <h5>Validate your final result here:</h5>
+        <h5 class="final">Validate your final result here:</h5>
         <input
           className={`${hasError ? "error" : ""}`}
           type="text"
@@ -280,6 +291,10 @@ function App() {
         {inputFinalValue && (correctAnswer ? <GreenCheckmark /> : <RedCross />)}
         {correctAnswer && (
           <Confetti width={width} height={height} colors={["#4682b4"]} />
+        )}
+        {!correctAnswer && (
+          // colors blue and pink
+          <Confetti width={width} height={200} numberOfPieces={2} colors={["#ff69b4", "#4682b4"]} />
         )}
         {hasError && <div className="error-hint">hint: {error}</div>}
       </div>
