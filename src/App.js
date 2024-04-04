@@ -101,8 +101,8 @@ function App() {
   };
 
   const sendSolutionToGA = (solution, correct) => {
-    window.gtag('event', 'solution', {
-      'event_category': (correct ? 'correct_solution' : 'incorrect_solution')+cookies.userName,
+    window.gtag('event', (correct ? 'correct' : 'incorrect')+'_solution', {
+      'event_category': cookies.userName,
       'event_label': solution,
     });
   };
@@ -130,7 +130,7 @@ function App() {
       setCorrectAnswer(true);
       setWasCorrectOnce(true);
       sendSolvedToGA(cookies.userName);
-      sendSolutionToGA(value);
+      sendSolutionToGA(value, true);
     } else if (
       abc === 1 &&
       def === 1 &&
@@ -143,10 +143,10 @@ function App() {
       setCorrectAnswer(true);
       setWasCorrectOnce(true);
       sendSolvedToGA(cookies.userName);
-      sendSolutionToGA(value);
+      sendSolutionToGA(value, true);
     } else {
       setCorrectAnswer(false);
-      sendSolutionToGA(value);
+      sendSolutionToGA(value, false);
     }
   };
 
