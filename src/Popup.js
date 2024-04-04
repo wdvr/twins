@@ -37,7 +37,7 @@ const UserNamePopup = ({ showPopup, setShowPopup }) => {
 
   return (
     <div class="popup">
-      <h2>Hurray!</h2>
+      <h2>Hurray, hurray!</h2>
       <p>Welcome to this online gender reveal party. Please enter your name below to get started.
 </p>
       <input
