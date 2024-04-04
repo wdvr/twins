@@ -34,7 +34,7 @@ function App() {
   const inputValue2 = "  ×[(x+c)(y+d)−cd-(x+y)]=FUN";
   const inputValue3 = "a = 1; b=1; c=2; d=2";
 
-  const { width, height } = useWindowSize();
+  const { width } = useWindowSize();
 
   const [inputTwoValue, setInputTwoValue] = React.useState("");
 
