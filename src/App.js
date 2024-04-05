@@ -4,6 +4,7 @@ import Tex2SVG from "react-hook-mathjax";
 import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
 import UserNamePopup from "./Popup";
+import ConfettiExplosion from 'react-confetti-explosion';
 
 const getErrorFromHTML = (html) =>
   html.children[1].firstChild.firstChild.attributes["data-mjx-error"].value;
@@ -11,6 +12,7 @@ const getErrorFromHTML = (html) =>
 function App() {
   const [cookies] = useCookies(["userName"]);
   const [showPopup, setShowPopup] = useState(false);
+  const [startSecondExplosion, setStartSecondExplosion] = useState(false);
 
   // on path /?reset, delete the cookie
   useEffect(() => {
@@ -27,11 +29,16 @@ function App() {
     }
   }, [cookies.userName]);
 
+  const handleFinishFirstExplosion = () => {
+    if (!startSecondExplosion) {
+    setStartSecondExplosion(true);}
+  }
+
   const inputValueCombined =
-    "[(x+a)(y+b)−ab -(x+y)]×[(x+c)(y+d)−cd-2*(x+y)]=FUN";
+    "[(x+a)(y+b)−ab -(x+y)]+[(x+c)(y+d)−cd-2*(x+y)]=FUN";
 
   const inputValue = "[(x+a)(y+b)−ab -(x+y)]";
-  const inputValue2 = "  ×[(x+c)(y+d)−cd-2*(x+y)]=FUN";
+  const inputValue2 = "  +[(x+c)(y+d)−cd-2*(x+y)]=FUN";
   const inputValue3 = "a = 1; b=1; c=2; d=2";
 
   const { width } = useWindowSize();
@@ -168,7 +175,7 @@ function App() {
         <h5 class="top">Welcome, {cookies.userName}!</h5> <a href="/?reset" class="notyou">(Not {cookies.userName}?)</a>
         <p class="explanation">
           {" "}
-          As the tradition in our family goes, the gender of future children is announced through a riddle.</p>
+          As the tradition in our family goes for centuries, the gender of future children is announced through a riddle.</p>
         <p class="task"> Your task is simple: simplify the formula below.
         </p>
 
@@ -321,8 +328,14 @@ function App() {
 
         {inputFinalValue && (correctAnswer ? <GreenCheckmark /> : <RedCross />)}
         {wasCorrectOnce && (
+          <div>
           <Confetti recycle={correctAnswer} width={width} height={pageHeight} colors={["#4682b4"]} numberOfPieces={300} />
+          <ConfettiExplosion className="confettiexplosion1" colors={["#4682b4"]} width={width} height={pageHeight} onComplete={handleFinishFirstExplosion} />
+          </div>
+
         )}
+        {startSecondExplosion && (<ConfettiExplosion className="confettiexplosion2" colors={["#4682b4"]} width={width} height={pageHeight} />)
+}
         {!correctAnswer && (
           // colors blue and pink
           <Confetti  width={width} height={200} numberOfPieces={2} colors={["#ff69b4", "#4682b4"]} />
