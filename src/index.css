@@ -166,6 +166,12 @@ h5.top {
   font-size: xx-large;
 }
 
+
+/* define the width of any child of the class 'formulaCombined' */
+.formulaCombined > * {
+  width: 90%;
+}
+
 /* for mobile, font-size is xx-large */
 @media (max-width: 600px) {
   h5.top {

@@ -197,9 +197,10 @@ function App() {
         <div>
           {width > 700 ? (
             <Tex2SVG
-              class={""}
+              class={"formulaCombined"}
               tabindex={-1}
               latex={inputValueCombined}
+              width={width*0.9}
               onSuccess={() =>
                 setLastValidInput(hasError ? lastValidInput : inputValue)
               }
