@@ -190,7 +190,6 @@ function App() {
         <h5 class="top">Welcome, {cookies.userName}!</h5> <a href="/?reset" class="notyou">(Not {cookies.userName}?)</a>
         <p class="explanation">
           {" "}
-          Hi, I have just been born.
           As the tradition in our family goes for centuries, the gender of future children is announced through a riddle.</p>
         <p class="task"> Your task is simple: simplify the formula below.
         </p>
