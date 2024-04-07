@@ -14,6 +14,7 @@ function App() {
   const [cookies] = useCookies(["userName"]);
   const [showPopup, setShowPopup] = useState(false);
   const [startSecondExplosion, setStartSecondExplosion] = useState(false);
+  const [explosionOngoing, setExplosionOngoing] = useState(true);
 
   // on path /?reset, delete the cookie
   useEffect(() => {
@@ -164,6 +165,12 @@ function App() {
       correctAnswered(false, value);
     }
   };
+
+  const explosionComplete = () => {
+    // hide the confetti explosion element - smooth transition
+    setExplosionOngoing(false);
+  };
+
 
   // calculate the height of the page (so including the scrollable part)
   const pageHeight = Math.max(
@@ -359,11 +366,11 @@ function App() {
         {wasCorrectOnce && (
           <div>
           <Confetti recycle={correctAnswer} width={width} height={pageHeight} colors={["#4682b4"]} numberOfPieces={300} />
-          <ConfettiExplosion className="confettiexplosion1" colors={["#4682b4"]} />
+          (explosionOngoing && <ConfettiExplosion className="confettiexplosion1" colors={["#4682b4"]} onComplete={explosionComplete} />)
           </div>
 
         )}
-        {startSecondExplosion && (<ConfettiExplosion className="confettiexplosion2" colors={["#4682b4"]}/>)
+        {startSecondExplosion && explosionOngoing && (<ConfettiExplosion className="confettiexplosion2" colors={["#4682b4"]}/>)
 }
         {!correctAnswer && (
           // colors blue and pink
