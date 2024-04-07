@@ -356,11 +356,11 @@ function App() {
         {wasCorrectOnce && (
           <div>
           <Confetti recycle={correctAnswer} width={width} height={pageHeight} colors={["#4682b4"]} numberOfPieces={300} />
-          <ConfettiExplosion className="confettiexplosion1" colors={["#4682b4"]} width={width} height={height} />
+          <ConfettiExplosion className="confettiexplosion1" colors={["#4682b4"]} />
           </div>
 
         )}
-        {startSecondExplosion && (<ConfettiExplosion className="confettiexplosion2" colors={["#4682b4"]} width={width} height={height} />)
+        {startSecondExplosion && (<ConfettiExplosion className="confettiexplosion2" colors={["#4682b4"]}/>)
 }
         {!correctAnswer && (
           // colors blue and pink
