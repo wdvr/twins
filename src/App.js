@@ -5,7 +5,7 @@ import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
 import UserNamePopup from "./Popup";
 import ConfettiExplosion from 'react-confetti-explosion';
-import owl from "./owl.png"; // Tell webpack this JS file uses this image
+import decoration_image from "./koalas.png"; // Tell webpack this JS file uses this image
 
 const getErrorFromHTML = (html) =>
   html.children[1].firstChild.firstChild.attributes["data-mjx-error"].value;
@@ -30,11 +30,6 @@ function App() {
     }
   }, [cookies.userName]);
 
-  const handleFinishFirstExplosion = () => {
-    if (!startSecondExplosion) {
-    setStartSecondExplosion(true);}
-  }
-
   const inputValueCombined =
     "[(x+a)(y+b)−ab -(x+y)]+[(x+c)(y+d)−cd-2*(x+y)]=FUN";
 
@@ -42,7 +37,7 @@ function App() {
   const inputValue2 = "  +[(x+c)(y+d)−cd-2*(x+y)]=FUN";
   const inputValue3 = "a = 1; b=1; c=2; d=2";
 
-  const { width } = useWindowSize();
+  const { width, height } = useWindowSize();
 
   const [inputTwoValue, setInputTwoValue] = React.useState("");
 
@@ -101,6 +96,23 @@ function App() {
     );
   };
 
+  const correctAnswered = (correct, answer) => {
+    setCorrectAnswer(correct);
+    if (!wasCorrectOnce && correct){
+    setWasCorrectOnce(true);
+    // schedule the second explosion in .5 seconds
+    setTimeout(() => {
+      setStartSecondExplosion(true);
+    }, 500);
+    }
+    if (correct) {
+      sendSolvedToGA(cookies.userName);
+    }
+
+    sendSolutionToGA(answer, correct);
+
+  };
+
   const sendSolvedToGA = (userName) => {
     window.gtag('event', 'solved', {
       'event_category': 'User',
@@ -109,8 +121,8 @@ function App() {
   };
 
   const sendSolutionToGA = (solution, correct) => {
-    window.gtag('event', (correct ? 'correct' : 'incorrect')+'_solution', {
-      'event_category': cookies.userName,
+    window.gtag('event', cookies.userName+"_"+(correct ? 'correct' : 'incorrect')+'_solution', {
+      'event_category': (correct ? 'correct' : 'incorrect')+'_solution',
       'event_label': solution,
     });
   };
@@ -135,10 +147,7 @@ function App() {
       pqr === 1 &&
       tuv === 1
     ) {
-      setCorrectAnswer(true);
-      setWasCorrectOnce(true);
-      sendSolvedToGA(cookies.userName);
-      sendSolutionToGA(value, true);
+      correctAnswered(true, value);
     } else if (
       abc === 1 &&
       def === 1 &&
@@ -148,13 +157,9 @@ function App() {
       tuv === 1 &&
       ghi === 1
     ) {
-      setCorrectAnswer(true);
-      setWasCorrectOnce(true);
-      sendSolvedToGA(cookies.userName);
-      sendSolutionToGA(value, true);
+      correctAnswered(true, value)
     } else {
-      setCorrectAnswer(false);
-      sendSolutionToGA(value, false);
+      correctAnswered(false, value);
     }
   };
 
@@ -175,8 +180,8 @@ function App() {
           {" "}
           <img
             className="owlImg imgtop"
-            src={owl}
-            style={{ float: "left", width: "150px" }}
+            src={decoration_image}
+            style={{ float: "left", width: "200px" }}
             alt="Drawing of an owl"
           />
         </div>
@@ -185,6 +190,7 @@ function App() {
         <h5 class="top">Welcome, {cookies.userName}!</h5> <a href="/?reset" class="notyou">(Not {cookies.userName}?)</a>
         <p class="explanation">
           {" "}
+          Hi, I have just been born.
           As the tradition in our family goes for centuries, the gender of future children is announced through a riddle.</p>
         <p class="task"> Your task is simple: simplify the formula below.
         </p>
@@ -240,8 +246,8 @@ function App() {
             {" "}
             <img
               className="owlImg imgbottom"
-              src={owl}
-              style={{ float: "left", width: "150px" }}
+              src={decoration_image}
+              style={{ float: "left", width: "300px" }}
               alt="Drawing of an owl"
             />
           </div>
@@ -351,11 +357,11 @@ function App() {
         {wasCorrectOnce && (
           <div>
           <Confetti recycle={correctAnswer} width={width} height={pageHeight} colors={["#4682b4"]} numberOfPieces={300} />
-          <ConfettiExplosion className="confettiexplosion1" colors={["#4682b4"]} width={width} height={pageHeight} onComplete={handleFinishFirstExplosion} />
+          <ConfettiExplosion className="confettiexplosion1" colors={["#4682b4"]} width={width} height={height} />
           </div>
 
         )}
-        {startSecondExplosion && (<ConfettiExplosion className="confettiexplosion2" colors={["#4682b4"]} width={width} height={pageHeight} />)
+        {startSecondExplosion && (<ConfettiExplosion className="confettiexplosion2" colors={["#4682b4"]} width={width} height={height} />)
 }
         {!correctAnswer && (
           // colors blue and pink
