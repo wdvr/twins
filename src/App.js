@@ -5,6 +5,7 @@ import Confetti from "react-confetti";
 import useWindowSize from "react-use/lib/useWindowSize";
 import UserNamePopup from "./Popup";
 import ConfettiExplosion from 'react-confetti-explosion';
+import owl from "./owl.png"; // Tell webpack this JS file uses this image
 
 const getErrorFromHTML = (html) =>
   html.children[1].firstChild.firstChild.attributes["data-mjx-error"].value;
@@ -169,8 +170,17 @@ function App() {
   return (
     <div className='App'>
       <UserNamePopup showPopup={showPopup} setShowPopup={setShowPopup} />
-
       <div className={showPopup ? "App-container blurred": "App-container"}>
+      <div className="imgdiv">
+          {" "}
+          <img
+            className="owlImg imgtop"
+            src={owl}
+            style={{ float: "left", width: "150px" }}
+            alt="Drawing of an owl"
+          />
+        </div>
+
         <h3>Gender Reveal Party</h3>
         <h5 class="top">Welcome, {cookies.userName}!</h5> <a href="/?reset" class="notyou">(Not {cookies.userName}?)</a>
         <p class="explanation">
@@ -225,6 +235,17 @@ function App() {
             onError={(html) => setError(getErrorFromHTML(html))}
           />
         </div>
+
+          <div className="imgdiv">
+            {" "}
+            <img
+              className="owlImg imgbottom"
+              src={owl}
+              style={{ float: "left", width: "150px" }}
+              alt="Drawing of an owl"
+            />
+          </div>
+
 
         <p>You can use this as a workspace to write down intermediate steps:</p>
         <div>

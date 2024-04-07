@@ -1,0 +1,104 @@
+/* Base Layout and Fonts */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', Arial, sans-serif; /* Nunito is friendly yet professional */
+  background-color: #f5f5f5; /* Light, warm background for a cozy feel */
+  color: #333; /* Dark gray for readability and warmth */
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.App-container {
+  width: 90%;
+  max-width: 740px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Headers and Text */
+h3, h5, p {
+  margin: 20px 0;
+}
+
+h3 {
+  background-color: #e07a5f; /* Terra cotta for a welcoming, earthy header */
+  color: #fff;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.75rem;
+}
+
+h5.top, h5.final, .notyou {
+  color: #3d405b; /* Dark lavender gray for a hint of sophistication */
+}
+
+.notyou {
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Form Inputs and Buttons */
+input[type="text"], button {
+  width: 80%;
+  max-width: 680px;
+  padding: 12px 20px;
+  margin: 10px 0;
+  border: 2px solid #81b29a; /* Warm green for a touch of nature */
+  background-color: #fefae0; /* Creamy yellow for input fields, suggesting light and positivity */
+  color: #333;
+  border-radius: 15px;
+  font-size: 1.1rem;
+}
+
+input[type="text"]:focus, button:focus {
+  border-color: #f2cc8f; /* Soft, sandy focus color */
+  outline: none;
+}
+
+button {
+  background-color: #81b29a; /* Consistent with the border, for harmony */
+  color: #fefae0;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #3d405b; /* A darker, sophisticated hover */
+  color: #fefae0;
+}
+
+/* Additional Styling */
+.tex-container {
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid #f4f1de; /* Light border matching the background */
+  margin-top: 1rem;
+}
+
+.external-links a {
+  color: #3d405b;
+  transition: color 0.3s ease-in-out;
+}
+
+.external-links a:hover {
+  color: #81b29a;
+}
+
+.blurred {
+  filter: blur(8px);
+}
+
+.error {
+  border-color: #e07a5f; /* A strong color for errors, matching the header */
+}
