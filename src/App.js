@@ -39,6 +39,8 @@ function App() {
 
   const { width, height } = useWindowSize();
 
+  console.log(height);
+
   const [inputTwoValue, setInputTwoValue] = React.useState("");
 
   const [inputThreeValue, setInputThreeValue] = React.useState("");
