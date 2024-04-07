@@ -201,17 +201,17 @@ h3 {
 
 .confettiexplosion1 {
   position: absolute;
-  top: 50%;
+  bottom: 20%;
   left: 25%;
-  width: 100%;
+  /* width: 100%; */
   z-index: 100;
   pointer-events: none;
 }
 .confettiexplosion2 {
   position: absolute;
-  top: 50%;
+  bottom: 20%;
   left: 75%;
-  width: 100%;
+  /* width: 100%; */
   z-index: 100;
   pointer-events: none;
 }
