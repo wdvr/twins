@@ -129,6 +129,7 @@ function App() {
 
 
   const validateResult = (value) => {
+    // haha nice try finding this - might as well solve the equation at this point
     const ls = value.toLowerCase().replace(/ /g, "");
     const abc = ls.split(String.fromCharCode(100 + 20)).length - 1;
     const def = ls.split(String.fromCharCode(117 + 4)).length - 1;
