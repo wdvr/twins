@@ -36,6 +36,11 @@ function App() {
   const inputValue = "1/c*[(ax-by)^2-(ax+by)^2]";
   const inputValue2 = "  +(x+c)(y+d)−cd-c(x+y)=fun";
   const inputValue3 = "a=1; b=-1; c=4; d=4";
+  const c00 = "46"
+  const c01 = "69"
+  const c11 = "82"
+  const c12 = "ff"
+  const c22 = "b4"
 
   const { width } = useWindowSize();
 
@@ -95,6 +100,10 @@ function App() {
       </svg>
     );
   };
+
+  const c1 = "#" + c00 + c11 + c22
+  const c2 = "#" + c12 + c01 + c22
+
 
   const correctAnswered = (correct, answer) => {
     setCorrectAnswer(correct);
@@ -357,16 +366,16 @@ function App() {
         {inputFinalValue && (correctAnswer ? <GreenCheckmark /> : <RedCross />)}
         {wasCorrectOnce && (
           <div>
-          <Confetti recycle={correctAnswer} width={width} height={pageHeight} colors={["#4682b4"]} numberOfPieces={300} />
-          <ConfettiExplosion className="confettiexplosion1" colors={["#4682b4"]} height={"200vh"}/>
+          <Confetti recycle={correctAnswer} width={width} height={pageHeight} colors={[c1]} numberOfPieces={300} />
+          <ConfettiExplosion className="confettiexplosion1" colors={[c1]} height={"200vh"}/>
           </div>
 
         )}
-        {startSecondExplosion  && <ConfettiExplosion className="confettiexplosion2" colors={["#4682b4"]} height={"200vh"}/> }
+        {startSecondExplosion  && <ConfettiExplosion className="confettiexplosion2" colors={[c1]} height={"200vh"}/> }
         
         {!correctAnswer && (
           // colors blue and pink
-          <Confetti  width={width} height={200} numberOfPieces={2} colors={["#ff69b4", "#4682b4"]} />
+          <Confetti  width={width} height={200} numberOfPieces={2} colors={[c1,c2]} />
         )}
         {hasError && <div className="error-hint">hint: {error}</div>}
       </div>
