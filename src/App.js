@@ -31,10 +31,10 @@ function App() {
   }, [cookies.userName]);
 
   const inputValueCombined =
-    "1/c*[(ax-by)^2-(ax+by)^2]+(x+c)(y+d)-cd-4(x+y)=fun";
+    "1/c*[(ax-by)^2-(ax+by)^2]+(x+c)(y+d)-cd-c(x+y)=fun";
 
   const inputValue = "1/c*[(ax-by)^2-(ax+by)^2]";
-  const inputValue2 = "  +(x+c)(y+d)−cd-4(x+y)=fun";
+  const inputValue2 = "  +(x+c)(y+d)−cd-c(x+y)=fun";
   const inputValue3 = "a=1; b=-1; c=4; d=4";
 
   const { width } = useWindowSize();
