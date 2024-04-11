@@ -172,6 +172,7 @@ function App() {
       correctAnswered(false, value);
     }
   };
+  const c3=c1;
 
   // calculate the height of the page (so including the scrollable part)
   const pageHeight = Math.max(
@@ -181,6 +182,8 @@ function App() {
     document.documentElement.scrollHeight,
     document.documentElement.offsetHeight
   );
+
+  const c4 = c3 ? c3 : c1;
 
   return (
     <div className='App'>
@@ -367,11 +370,11 @@ function App() {
         {wasCorrectOnce && (
           <div>
           <Confetti recycle={correctAnswer} width={width} height={pageHeight} colors={[c1]} numberOfPieces={300} />
-          <ConfettiExplosion className="confettiexplosion1" colors={[c1]} height={"200vh"}/>
+          <ConfettiExplosion className="confettiexplosion1" colors={[c3]} height={"200vh"}/>
           </div>
 
         )}
-        {startSecondExplosion  && <ConfettiExplosion className="confettiexplosion2" colors={[c1]} height={"200vh"}/> }
+        {startSecondExplosion  && <ConfettiExplosion className="confettiexplosion2" colors={[c4]} height={"200vh"}/> }
         
         {!correctAnswer && (
           // colors blue and pink
