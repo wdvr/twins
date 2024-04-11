@@ -31,11 +31,11 @@ function App() {
   }, [cookies.userName]);
 
   const inputValueCombined =
-    "[(x+a)(y+b)−ab -(x+y)]+[(x+c)(y+d)−cd-2*(x+y)]=FUN";
+    "1/c[(ax-by)^2-(ax+by)^2]+(x+c)(y+d)-cd-4(x+y)=fun";
 
-  const inputValue = "[(x+a)(y+b)−ab -(x+y)]";
-  const inputValue2 = "  +[(x+c)(y+d)−cd-2*(x+y)]=FUN";
-  const inputValue3 = "a = 1; b=1; c=2; d=2";
+  const inputValue = "1/c[(ax-by)^2-(ax+by)^2]";
+  const inputValue2 = "  +(x+c)(y+d)−cd-4(x+y)=fun";
+  const inputValue3 = "a=1; b=-1; c=4; d=4";
 
   const { width } = useWindowSize();
 
